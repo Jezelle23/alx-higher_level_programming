@@ -1,0 +1,80 @@
+text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test case 1: Regular text with punctuation marks
+text1 = "Hello. This is a test. How are you?"
+text_indentation(text1)
+"""
+Expected output:
+Hello
+This is a test
+
+How are you?
+"""
+
+# Test case 2: Text without punctuation marks
+text2 = "This is a sample text without punctuation marks"
+text_indentation(text2)
+"""
+Expected output:
+This is a sample text without punctuation marks
+"""
+
+# Test case 3: Text with multiple consecutive punctuation marks
+text3 = "Hello... Are you there?? How are you???"
+text_indentation(text3)
+"""
+Expected output:
+Hello..
+
+Are you there??
+How are you???
+"""
+
+# Test case 4: Empty text
+text4 = ""
+text_indentation(text4)
+"""
+Expected output:
+(nothing)
+"""
+
+# Test case 5: Text with leading and trailing spaces
+text5 = "   This is a text with spaces.    "
+text_indentation(text5)
+"""
+Expected output:
+This is a text with spaces
+"""
+
+# Test case 6: Text with non-string input
+text6 = 12345
+text_indentation(text6)
+"""
+Expected output:
+TypeError: text must be a string
+"""
+
+# Test case 7: Text with a mix of punctuation marks and special characters
+text7 = "Hello, how are you? I'm good :)"
+text_indentation(text7)
+"""
+Expected output:
+Hello, how are you?
+
+I'm good :)
+"""
+
+# Test case 8: Text with only punctuation marks
+text8 = "...?:::"
+text_indentation(text8)
+"""
+Expected output:
+..
+..
+
+:
+:
+:
+"""
+
+
