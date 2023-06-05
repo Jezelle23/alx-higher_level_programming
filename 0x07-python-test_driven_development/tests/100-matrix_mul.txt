@@ -1,0 +1,37 @@
+import unittest
+from matrix_mul import matrix_mul
+
+class MatrixMulTestCase(unittest.TestCase):
+    def test_valid_matrices(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[5, 6], [7, 8]]
+        expected_result = [[19, 22], [43, 50]]
+        self.assertEqual(matrix_mul(m_a, m_b), expected_result)
+
+    def test_empty_matrices(self):
+        m_a = []
+        m_b = [[]]
+        with self.assertRaises(ValueError):
+            matrix_mul(m_a, m_b)
+
+    def test_invalid_data_types(self):
+        m_a = [[1, 2], [3, 'four']]
+        m_b = [[5, 6], [7, 8]]
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    def test_invalid_dimensions(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[5, 6, 7], [8, 9, 10]]
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    def test_incompatible_dimensions(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[5, 6], [7, 8], [9, 10]]
+        with self.assertRaises(ValueError):
+            matrix_mul(m_a, m_b)
+
+if __name__ == '__main__':
+    unittest.main()
+
