@@ -1,0 +1,46 @@
+import unittest
+import importlib
+
+class AddIntegerTestCase(unittest.TestCase):
+    def setUp(self):
+        self.add_integer = importlib.import_module('0-add_integer').add_integer
+
+    def test_adding_integers(self):
+        result = self.add_integer(2, 3)
+        self.assertEqual(result, 5)
+
+    def test_adding_floats(self):
+        result = self.add_integer(2.5, 3.7)
+        self.assertEqual(result, 5)
+
+    def test_casting_float_to_int(self):
+        result = self.add_integer(2.9, 3)
+        self.assertEqual(result, 5)
+
+    def test_casting_int_to_float(self):
+        result = self.add_integer(2, 3.1)
+        self.assertEqual(result, 5)
+
+    def test_missing_argument(self):
+        with self.assertRaises(TypeError):
+            self.add_integer()
+
+    def test_invalid_argument_a(self):
+        with self.assertRaises(TypeError):
+            self.add_integer(None, 3)
+
+    def test_invalid_argument_b(self):
+        with self.assertRaises(TypeError):
+            self.add_integer(2, None)
+
+    def test_invalid_argument_type_a(self):
+        with self.assertRaises(TypeError):
+            self.add_integer("2", 3)
+
+    def test_invalid_argument_type_b(self):
+        with self.assertRaises(TypeError):
+            self.add_integer(2, "3")
+
+if __name__ == '__main__':
+    unittest.main()
+
