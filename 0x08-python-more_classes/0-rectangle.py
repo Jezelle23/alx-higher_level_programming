@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-class Rectangle:
-    """Defines the blueprint of a rectangle"""
+"""Define a class"""
 
+
+class Rectangle:
+    """Represent a rectangle"""
     pass
