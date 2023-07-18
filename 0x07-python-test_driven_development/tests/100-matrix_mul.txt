@@ -1,0 +1,49 @@
+import unittest
+from matrix_mul import matrix_mul
+
+class MatrixMultiplicationTestCase(unittest.TestCase):
+    def test_valid_multiplication(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[5, 6], [7, 8]]
+        expected_result = [[19, 22], [43, 50]]
+        self.assertEqual(matrix_mul(m_a, m_b), expected_result)
+
+    def test_invalid_input_type(self):
+        m_a = [1, 2]
+        m_b = [[3, 4], [5, 6]]
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    def test_invalid_input_structure(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [3, 4]
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    def test_empty_input(self):
+        m_a = []
+        m_b = [[1, 2], [3, 4]]
+        with self.assertRaises(ValueError):
+            matrix_mul(m_a, m_b)
+
+    def test_invalid_element_type(self):
+        m_a = [[1, 2], [3, "4"]]
+        m_b = [[5, 6], [7, 8]]
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    def test_non_rectangular_input(self):
+        m_a = [[1, 2], [3, 4], [5]]
+        m_b = [[5, 6], [7, 8]]
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    def test_incompatible_dimensions(self):
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[1, 2, 3], [4, 5, 6]]
+        with self.assertRaises(ValueError):
+            matrix_mul(m_a, m_b)
+
+if __name__ == '__main__':
+    unittest.main()
+
